@@ -58,6 +58,7 @@ declare type Accommodations = ReadonlyArray<Readonly<{
     address: string;
     facilities: string;
     remarks: Remarks;
+    score: number;
 }>>;
 declare type QueriedContact = Readonly<{
     mobileNumber: NonNullable<Contact['mobileNumber']>;
