@@ -1,0 +1,21 @@
+{
+    "name": "utari-common",
+    "version": "0.0.0",
+    "author": "PoolOfDeath20",
+    "license": "MIT",
+    "main": "./build/index.js",
+    "types": "./build/index.d.ts",
+    "type": "module",
+    "scripts": {
+        "build": "rm -rf build && tsc -p tsconfig.json && ts-add-js-extension add --dir=build"
+    },
+    "dependencies": {
+        "granula-string": "^1.0.5",
+        "parse-dont-validate": "^1.0.3"
+    },
+    "devDependencies": {
+        "@types/node": "^17.0.21",
+        "ts-add-js-extension": "^1.0.1",
+        "typescript": "^4.5.5"
+    }
+}
