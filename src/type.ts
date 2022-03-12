@@ -77,7 +77,6 @@ type Accommodations = ReadonlyArray<
         address: string;
         facilities: string;
         remarks: Remarks;
-        score: number;
     }>
 >;
 
