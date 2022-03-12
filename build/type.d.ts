@@ -46,7 +46,7 @@ declare type Accommodations = ReadonlyArray<Readonly<{
     handlerType: HandlerType;
     name: string;
     contact: Contact;
-    accommodationType: Readonly<{
+    accommodation: Readonly<{
         type: 'Room';
         roomType: RoomType;
         rooms: Room;

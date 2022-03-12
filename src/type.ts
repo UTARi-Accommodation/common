@@ -62,7 +62,7 @@ type Accommodations = ReadonlyArray<
         handlerType: HandlerType;
         name: string;
         contact: Contact;
-        accommodationType: Readonly<
+        accommodation: Readonly<
             | {
                   type: 'Room';
                   roomType: RoomType;
