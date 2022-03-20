@@ -78,22 +78,30 @@ const getMessage = (value: GranulaString): Message => ({
 });
 
 const allValueValid = (
-    { value: name, error: nameErr }: Name,
-    { value: email, error: emailErr }: Email,
-    { value: message, error: messageErr }: Message
+    values: Readonly<{
+        name: string;
+        email: string;
+        message: string;
+    }>
 ): boolean => {
+    const name = getName(GranulaString.createFromString(values.name));
+    const email = getEmail(GranulaString.createFromString(values.email));
+    const message = getMessage(GranulaString.createFromString(values.message));
+
     const noError =
-        isEmpty(nameErr) && isEmpty(emailErr) && isEmpty(messageErr);
-    const nameInvalid = name.isBlank() || name.isEmpty();
+        isEmpty(name.error) && isEmpty(email.error) && isEmpty(message.error);
+
+    const nameInvalid = name.value.isBlank() || name.value.isEmpty();
     const messageInvalid =
-        message.isBlank() ||
-        message.isEmpty() ||
-        !message.inRangeOf({
+        message.value.isBlank() ||
+        message.value.isEmpty() ||
+        !message.value.inRangeOf({
             min: 10,
             excludeBlankSpace: true,
         });
     const inputValid =
-        messageInvalid && validateEmail(email.valueOf()) && !nameInvalid;
+        messageInvalid && validateEmail(email.value.valueOf()) && !nameInvalid;
+
     return noError && !inputValid;
 };
 

@@ -24,7 +24,11 @@ declare type Data = Readonly<{
 declare const getName: (value: GranulaString) => Name;
 declare const getEmail: (value: GranulaString) => Email;
 declare const getMessage: (value: GranulaString) => Message;
-declare const allValueValid: ({ value: name, error: nameErr }: Name, { value: email, error: emailErr }: Email, { value: message, error: messageErr }: Message) => boolean;
+declare const allValueValid: (values: Readonly<{
+    name: string;
+    email: string;
+    message: string;
+}>) => boolean;
 export { allValueValid, getMessage, getEmail, getName };
 export type { Name, Email, Message, Data };
 //# sourceMappingURL=contact.d.ts.map

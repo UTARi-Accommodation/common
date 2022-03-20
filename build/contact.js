@@ -1,4 +1,4 @@
-import { isEmpty } from 'granula-string';
+import { GranulaString, isEmpty } from 'granula-string';
 const validateEmail = (email) => /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@\\"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email);
 const getName = (value) => ({
     value,
@@ -31,16 +31,19 @@ const getMessage = (value) => ({
                 ? ''
                 : '*At least 10 words are required*',
 });
-const allValueValid = ({ value: name, error: nameErr }, { value: email, error: emailErr }, { value: message, error: messageErr }) => {
-    const noError = isEmpty(nameErr) && isEmpty(emailErr) && isEmpty(messageErr);
-    const nameInvalid = name.isBlank() || name.isEmpty();
-    const messageInvalid = message.isBlank() ||
-        message.isEmpty() ||
-        !message.inRangeOf({
+const allValueValid = (values) => {
+    const name = getName(GranulaString.createFromString(values.name));
+    const email = getEmail(GranulaString.createFromString(values.email));
+    const message = getMessage(GranulaString.createFromString(values.message));
+    const noError = isEmpty(name.error) && isEmpty(email.error) && isEmpty(message.error);
+    const nameInvalid = name.value.isBlank() || name.value.isEmpty();
+    const messageInvalid = message.value.isBlank() ||
+        message.value.isEmpty() ||
+        !message.value.inRangeOf({
             min: 10,
             excludeBlankSpace: true,
         });
-    const inputValid = messageInvalid && validateEmail(email.valueOf()) && !nameInvalid;
+    const inputValid = messageInvalid && validateEmail(email.value.valueOf()) && !nameInvalid;
     return noError && !inputValid;
 };
 export { allValueValid, getMessage, getEmail, getName };
