@@ -242,12 +242,10 @@ type SortedBookmarkedUnitDownload = ReadonlyArray<
         }>
 >;
 
-type Center =
-    | Readonly<{
-          lat: number;
-          lng: number;
-      }>
-    | undefined;
+type Center = Readonly<{
+    lat: number;
+    lng: number;
+}>;
 
 type QueryDetailedAPI = Readonly<{
     id: number;

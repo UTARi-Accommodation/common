@@ -9,6 +9,9 @@
     "scripts": {
         "build": "rm -rf build && tsc -p tsconfig.json && ts-add-js-extension add --dir=build"
     },
+    "files": [
+        "build"
+    ],
     "dependencies": {
         "granula-string": "^1.0.5",
         "parse-dont-validate": "^1.0.3"

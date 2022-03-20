@@ -161,7 +161,7 @@ declare type SortedBookmarkedUnitDownload = ReadonlyArray<Omit<QueriedUnitDetail
 declare type Center = Readonly<{
     lat: number;
     lng: number;
-}> | undefined;
+}>;
 declare type QueryDetailedAPI = Readonly<{
     id: number;
     token: CommonApi['token'];
