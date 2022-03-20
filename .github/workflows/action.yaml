@@ -1,0 +1,26 @@
+name: common-ci-cd
+
+on: [push, pull_request]
+
+jobs:
+    all:
+        runs-on: ubuntu-latest
+        strategy:
+            fail-fast: false
+        steps:
+            - name: Checkout Code
+              uses: actions/checkout@v2
+
+            - name: Install Depedencies
+              run: yarn
+
+            - name: Run Typecheck
+              run: make typecheck
+
+            - name: Run Tests
+              run: |
+                  make test
+                  rm -rf __test__
+
+            - name: Run Build
+              run: make build
