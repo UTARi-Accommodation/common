@@ -43,65 +43,66 @@ type Data = Readonly<
       }
 >;
 
-const getName = (value: GranulaString): Name => ({
-    value,
-    error: value.isEmpty()
-        ? '*Please do not leave name section empty*'
-        : value.isBlank()
-        ? '*Please do not leave name section blank*'
-        : '',
-});
+const getName = (string: string): Name => {
+    const value = GranulaString.createFromString(string);
+    return {
+        value,
+        error: value.isEmpty()
+            ? '*Please do not leave name section empty*'
+            : value.isBlank()
+            ? '*Please do not leave name section blank*'
+            : '',
+    };
+};
 
-const getEmail = (value: GranulaString): Email => ({
-    value,
-    error: value.isEmpty()
-        ? '*Please do not leave email section empty*'
-        : value.isBlank()
-        ? '*Please do not leave email section blank*'
-        : validateEmail(value.valueOf())
-        ? ''
-        : '*Please enter valid email format*',
-});
+const getEmail = (string: string): Email => {
+    const value = GranulaString.createFromString(string);
+    return {
+        value,
+        error: value.isEmpty()
+            ? '*Please do not leave email section empty*'
+            : value.isBlank()
+            ? '*Please do not leave email section blank*'
+            : validateEmail(value.valueOf())
+            ? ''
+            : '*Please enter valid email format*',
+    };
+};
 
-const getMessage = (value: GranulaString): Message => ({
-    value,
-    error: value.isEmpty()
-        ? '*Please do not leave message section empty*'
-        : value.isBlank()
-        ? '*Please do not leave message section blank*'
-        : value.inRangeOf({
-              min: 10,
-              excludeBlankSpace: true,
-          })
-        ? ''
-        : '*At least 10 words are required*',
-});
+const getMessage = (string: string): Message => {
+    const value = GranulaString.createFromString(string);
+    return {
+        value,
+        error: value.isEmpty()
+            ? '*Please do not leave message section empty*'
+            : value.isBlank()
+            ? '*Please do not leave message section blank*'
+            : value.inRangeOf({
+                  min: 10,
+                  excludeBlankSpace: true,
+              })
+            ? ''
+            : '*At least 10 words are required*',
+    };
+};
 
 const allValueValid = (
-    values: Readonly<{
-        name: string;
-        email: string;
-        message: string;
-    }>
+    { value: name, error: nameErr }: Name,
+    { value: email, error: emailErr }: Email,
+    { value: message, error: messageErr }: Message
 ): boolean => {
-    const name = getName(GranulaString.createFromString(values.name));
-    const email = getEmail(GranulaString.createFromString(values.email));
-    const message = getMessage(GranulaString.createFromString(values.message));
-
     const noError =
-        isEmpty(name.error) && isEmpty(email.error) && isEmpty(message.error);
-
-    const nameInvalid = name.value.isBlank() || name.value.isEmpty();
+        isEmpty(nameErr) && isEmpty(emailErr) && isEmpty(messageErr);
+    const nameInvalid = name.isBlank() || name.isEmpty();
     const messageInvalid =
-        message.value.isBlank() ||
-        message.value.isEmpty() ||
-        !message.value.inRangeOf({
+        message.isBlank() ||
+        message.isEmpty() ||
+        !message.inRangeOf({
             min: 10,
             excludeBlankSpace: true,
         });
     const inputValid =
-        messageInvalid && validateEmail(email.value.valueOf()) && !nameInvalid;
-
+        messageInvalid && validateEmail(email.valueOf()) && !nameInvalid;
     return noError && !inputValid;
 };
 

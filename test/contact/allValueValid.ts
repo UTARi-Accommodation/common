@@ -1,4 +1,4 @@
-import { allValueValid } from '../../src';
+import { allValueValid, getName, getEmail, getMessage } from '../../src';
 
 export default () =>
     describe('Contact allValueValid', () => {
@@ -7,73 +7,53 @@ export default () =>
         const message = 'Wendy is here to test';
         it('should attest all values are valid', () => {
             expect(
-                allValueValid({
-                    name,
-                    email,
-                    message,
-                })
+                allValueValid(
+                    getName(name),
+                    getEmail(email),
+                    getMessage(message)
+                )
             ).toBe(true);
         });
         it('should attest all values are valid except name', () => {
             expect(
-                allValueValid({
-                    name: '',
-                    email,
-                    message,
-                })
+                allValueValid(getName(''), getEmail(email), getMessage(message))
             ).toBe(false);
             expect(
-                allValueValid({
-                    name: ' ',
-                    email,
-                    message,
-                })
+                allValueValid(
+                    getName(' '),
+                    getEmail(email),
+                    getMessage(message)
+                )
             ).toBe(false);
         });
         it('should attest all values are valid except email', () => {
             expect(
-                allValueValid({
-                    name,
-                    email: '',
-                    message,
-                })
+                allValueValid(getName(name), getEmail(''), getMessage(message))
             ).toBe(false);
             expect(
-                allValueValid({
-                    name,
-                    email: ' ',
-                    message,
-                })
+                allValueValid(getName(name), getEmail(' '), getMessage(message))
             ).toBe(false);
             expect(
-                allValueValid({
-                    name,
-                    email: 'wendy@g',
-                    message,
-                })
+                allValueValid(
+                    getName(name),
+                    getEmail('wendy@g'),
+                    getMessage(message)
+                )
             ).toBe(false);
         });
         it('should attest all values are valid except message', () => {
             expect(
-                allValueValid({
-                    name,
-                    email,
-                    message: '',
-                })
+                allValueValid(getName(name), getEmail(email), getMessage(''))
             ).toBe(false);
             expect(
-                allValueValid({
-                    name,
-                    email,
-                    message: ' ',
-                })
+                allValueValid(getName(name), getEmail(email), getMessage(' '))
             ).toBe(false);
             expect(
-                allValueValid({
-                    name,
-                    email,
-                    message: '123456789',
-                })
+                allValueValid(
+                    getName(name),
+                    getEmail(email),
+                    getMessage('123456789')
+                )
             ).toBe(false);
         });
     });
