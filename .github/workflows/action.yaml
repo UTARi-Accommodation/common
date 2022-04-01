@@ -17,6 +17,12 @@ jobs:
             - name: Run Typecheck
               run: make typecheck
 
+            - name: Run Linter
+              run: make lint-src
+
+            - name: Run Format Check
+              run: make format-check
+
             - name: Run Tests
               run: |
                   make test

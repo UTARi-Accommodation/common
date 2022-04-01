@@ -1,4 +1,4 @@
-import { Region, RoomType, UnitType } from "./type";
+import { Region, RoomType, UnitType } from './type';
 declare const parseNullableAsDefaultOrUndefined: <T>(t: T | null | undefined) => NonNullable<T> | undefined;
 declare const parseAsReadonlyIntArray: (values: any) => ReadonlyArray<number>;
 declare const parseAsRegion: (region: any) => Region | undefined;
