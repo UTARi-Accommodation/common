@@ -10,13 +10,10 @@ typecheck:
 	make transpile arguments=--noEmit
 
 ## build
-build:
+prebuild:
+	rm -rf build
+build: prebuild
 	make transpile && node_modules/.bin/ts-add-js-extension add --dir=build
-
-## publish
-publish:
-	@read -p "What is your commit message: " COMMIT &&\
-		make build && git add . && git commit -m "$${COMMIT}" && git push
 
 ## test
 test:
