@@ -186,4 +186,4 @@ declare type UnitsQueried = Readonly<{
     center: Center;
 }>;
 export { Region, Contact, Room, RoomProperties, RoomType, RoomSize, Unit, Remarks, UnitType, Category, Accommodations, QueriedUnit, QueriedRoom, HandlerType, AccommodationType, QueriedContact, QueriedRoomDetails, QueriedUnitDetails, SortedRoom, SortedUnit, RentalFrequencies, RentalRange, QueryRoomWithCapacities, QueryRoomWithoutCapacities, QueryUnitWithoutBathRoomsAndBedRooms, QueryUnitWithBathRoomsAndBedRooms, Location, MultiSelectNumber, QueryBookmarkedRoom, QueryBookmarkedUnit, Center, SortedBookmarkedUnitDownload, SortedBookmarkedRoomDownload, QueryBookmarkedUnitAPI, QueryBookmarkedRoomAPI, QueryRoomsAPI, QueryUnitsAPI, QueryDetailedAPI, RoomsQueried, UnitsQueried, };
-//# sourceMappingURL=type.d.ts.map
+//# sourceMappingURL=accommodation.d.ts.map

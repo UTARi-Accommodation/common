@@ -1,4 +1,4 @@
-import { Region, RoomType, UnitType } from './type';
+import { Region, RoomType, UnitType } from './accommodation';
 declare const parseNullableAsDefaultOrUndefined: <T>(t: T | null | undefined) => NonNullable<T> | undefined;
 declare const parseAsReadonlyIntArray: (values: any) => ReadonlyArray<number>;
 declare const parseAsRegion: (region: any) => Region | undefined;
@@ -10,5 +10,9 @@ declare const parseAsReadonlyUnitTypeArray: (unitTypes: any) => ReadonlyArray<Un
 declare const parseAsLatitude: (latitude: unknown) => number;
 declare const parseAsLongitude: (longitude: unknown) => number;
 declare const parseAsSearch: (search: unknown) => string | undefined;
-export { parseAsLongitude, parseAsLatitude, parseAsReadonlyIntArray, parseAsReadonlyRegionArray, parseAsRegion, parseAsReadonlyRoomTypeArray, parseAsRoomType, parseAsReadonlyUnitTypeArray, parseAsUnitType, parseAsSearch, parseNullableAsDefaultOrUndefined, };
+declare const parseAsEnv: ({ env, name, }: Readonly<{
+    env: unknown;
+    name: string;
+}>) => string;
+export { parseAsLongitude, parseAsLatitude, parseAsReadonlyIntArray, parseAsReadonlyRegionArray, parseAsRegion, parseAsReadonlyRoomTypeArray, parseAsRoomType, parseAsReadonlyUnitTypeArray, parseAsUnitType, parseAsSearch, parseNullableAsDefaultOrUndefined, parseAsEnv, };
 //# sourceMappingURL=parser.d.ts.map
