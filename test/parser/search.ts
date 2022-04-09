@@ -1,6 +1,6 @@
 import { parseAsSearch } from '../../src';
 
-export default () =>
+const testSearchParser = () =>
     describe('Search parser', () => {
         it('should parse as search text', () => {
             const text = '  Testing purpose  ';
@@ -10,3 +10,5 @@ export default () =>
             expect(parseAsSearch(undefined)).toBe(undefined);
         });
     });
+
+export default testSearchParser;

@@ -1,6 +1,6 @@
 import { allValueValid, getName, getEmail, getMessage } from '../../src';
 
-export default () =>
+const testContactValidation = () =>
     describe('Contact allValueValid', () => {
         const name = 'Wendy';
         const email = 'wendy2000@gmail.com';
@@ -57,3 +57,5 @@ export default () =>
             ).toBe(false);
         });
     });
+
+export default testContactValidation;
