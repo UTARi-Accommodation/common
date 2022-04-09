@@ -1,6 +1,6 @@
 import { parseAsLongitude, parseAsLatitude } from '../../src';
 
-export default () =>
+const testCoordinateParser = () =>
     describe('Coordinate parser', () => {
         it('should parse as latitude', () => {
             const latitude = 3.1234;
@@ -20,3 +20,5 @@ export default () =>
             expect(() => parseAsLongitude(181)).toThrowError();
         });
     });
+
+export default testCoordinateParser;

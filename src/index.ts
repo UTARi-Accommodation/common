@@ -39,7 +39,7 @@ export {
     QueryDetailedAPI,
     RoomsQueried,
     UnitsQueried,
-} from './type';
+} from './accommodation';
 
 export {
     parseAsLongitude,
@@ -53,6 +53,7 @@ export {
     parseAsUnitType,
     parseAsSearch,
     parseNullableAsDefaultOrUndefined,
+    parseAsEnv,
 } from './parser';
 
 export { maxItemsPerPage, months, Month } from './constant';

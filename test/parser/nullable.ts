@@ -1,6 +1,6 @@
 import { parseNullableAsDefaultOrUndefined } from '../../src';
 
-export default () =>
+const testNullableParser = () =>
     describe('Nullable to default or undefined parser', () => {
         it('should parse as default value', () => {
             const obj = { x: 12, y: 34 };
@@ -13,3 +13,5 @@ export default () =>
             );
         });
     });
+
+export default testNullableParser;

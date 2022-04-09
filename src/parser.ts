@@ -4,7 +4,7 @@ import {
     parseAsNumber,
     parseAsString,
 } from 'parse-dont-validate';
-import { Region, RoomType, UnitType } from './type';
+import { Region, RoomType, UnitType } from './accommodation';
 
 const parseNullableAsDefaultOrUndefined = <T>(t: T | null | undefined) =>
     t ?? undefined;
@@ -87,6 +87,14 @@ const parseAsLongitude = (longitude: unknown) =>
 const parseAsSearch = (search: unknown) =>
     parseAsString(search).orElseGetUndefined()?.trim();
 
+const parseAsEnv = ({
+    env,
+    name,
+}: Readonly<{
+    env: unknown;
+    name: string;
+}>) => parseAsString(env).orElseThrowDefault(name);
+
 export {
     parseAsLongitude,
     parseAsLatitude,
@@ -99,4 +107,5 @@ export {
     parseAsUnitType,
     parseAsSearch,
     parseNullableAsDefaultOrUndefined,
+    parseAsEnv,
 };

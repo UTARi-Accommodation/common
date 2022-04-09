@@ -5,7 +5,7 @@ import {
     parseAsReadonlyUnitTypeArray,
 } from '../../src';
 
-export default () =>
+const testArrayParser = () =>
     describe('String to Array parser', () => {
         it('should parse as number array', () => {
             expect(parseAsReadonlyIntArray('1, 2, 3,4')).toStrictEqual([
@@ -52,3 +52,5 @@ export default () =>
             expect(parseAsReadonlyUnitTypeArray('Hous')).toStrictEqual([]);
         });
     });
+
+export default testArrayParser;

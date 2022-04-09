@@ -1,11 +1,13 @@
-import array from './parser/array';
-import coordinate from './parser/coordinate';
-import nullable from './parser/nullable';
-import search from './parser/search';
-import allValueValid from './contact/allValueValid';
+import testArrayParser from './parser/array';
+import testCoordinateParser from './parser/coordinate';
+import testNullableParser from './parser/nullable';
+import testSearchParser from './parser/search';
+import testContactValidation from './contact/allValueValid';
+import testEnvParser from './parser/env';
 
-array();
-coordinate();
-nullable();
-search();
-allValueValid();
+testArrayParser();
+testCoordinateParser();
+testNullableParser();
+testSearchParser();
+testContactValidation();
+testEnvParser();
