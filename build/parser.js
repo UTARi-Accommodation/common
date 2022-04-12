@@ -36,6 +36,5 @@ const parseAsLongitude = (longitude) => parseAsNumber(longitude)
     .inRangeOf(-180, 180)
     .orElseThrowCustom(`Expect long to be in range of -180 to 180, got "${longitude}" instead`);
 const parseAsSearch = (search) => parseAsString(search).orElseGetUndefined()?.trim();
-const parseAsEnv = ({ env, name, }) => parseAsString(env).orElseThrowDefault(name);
-export { parseAsLongitude, parseAsLatitude, parseAsReadonlyIntArray, parseAsReadonlyRegionArray, parseAsRegion, parseAsReadonlyRoomTypeArray, parseAsRoomType, parseAsReadonlyUnitTypeArray, parseAsUnitType, parseAsSearch, parseNullableAsDefaultOrUndefined, parseAsEnv, };
+export { parseAsLongitude, parseAsLatitude, parseAsReadonlyIntArray, parseAsReadonlyRegionArray, parseAsRegion, parseAsReadonlyRoomTypeArray, parseAsRoomType, parseAsReadonlyUnitTypeArray, parseAsUnitType, parseAsSearch, parseNullableAsDefaultOrUndefined, };
 //# sourceMappingURL=parser.js.map

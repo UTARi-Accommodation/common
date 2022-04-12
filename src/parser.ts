@@ -87,14 +87,6 @@ const parseAsLongitude = (longitude: unknown) =>
 const parseAsSearch = (search: unknown) =>
     parseAsString(search).orElseGetUndefined()?.trim();
 
-const parseAsEnv = ({
-    env,
-    name,
-}: Readonly<{
-    env: unknown;
-    name: string;
-}>) => parseAsString(env).orElseThrowDefault(name);
-
 export {
     parseAsLongitude,
     parseAsLatitude,
@@ -107,5 +99,4 @@ export {
     parseAsUnitType,
     parseAsSearch,
     parseNullableAsDefaultOrUndefined,
-    parseAsEnv,
 };
