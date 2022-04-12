@@ -53,7 +53,6 @@ export {
     parseAsUnitType,
     parseAsSearch,
     parseNullableAsDefaultOrUndefined,
-    parseAsEnv,
 } from './parser';
 
 export { maxItemsPerPage, months, Month } from './constant';

@@ -10,9 +10,5 @@ declare const parseAsReadonlyUnitTypeArray: (unitTypes: any) => ReadonlyArray<Un
 declare const parseAsLatitude: (latitude: unknown) => number;
 declare const parseAsLongitude: (longitude: unknown) => number;
 declare const parseAsSearch: (search: unknown) => string | undefined;
-declare const parseAsEnv: ({ env, name, }: Readonly<{
-    env: unknown;
-    name: string;
-}>) => string;
-export { parseAsLongitude, parseAsLatitude, parseAsReadonlyIntArray, parseAsReadonlyRegionArray, parseAsRegion, parseAsReadonlyRoomTypeArray, parseAsRoomType, parseAsReadonlyUnitTypeArray, parseAsUnitType, parseAsSearch, parseNullableAsDefaultOrUndefined, parseAsEnv, };
+export { parseAsLongitude, parseAsLatitude, parseAsReadonlyIntArray, parseAsReadonlyRegionArray, parseAsRegion, parseAsReadonlyRoomTypeArray, parseAsRoomType, parseAsReadonlyUnitTypeArray, parseAsUnitType, parseAsSearch, parseNullableAsDefaultOrUndefined, };
 //# sourceMappingURL=parser.d.ts.map
