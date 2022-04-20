@@ -1,8 +1,10 @@
 ## declare PHONY
 .PHONY: build test
 
+NODE_BIN=node_modules/.bin/
+
 ## type check
-tsc=node_modules/.bin/tsc
+tsc=$(NODE_BIN)tsc
 transpile:
 	$(tsc) -p tsconfig.json $(arguments) 
 
@@ -13,15 +15,15 @@ typecheck:
 prebuild:
 	rm -rf build
 build: prebuild
-	make transpile && node_modules/.bin/ts-add-js-extension add --dir=build
+	make transpile && $(NODE_BIN)ts-add-js-extension add --dir=build
 
 ## test
 test:
-	node_modules/.bin/esbuild test/index.ts --bundle --minify --target=node16.3.1 --platform=node --outfile=__test__/index.test.js &&\
-		node_modules/.bin/jest __test__
+	$(NODE_BIN)esbuild test/index.ts --bundle --minify --target=node16.3.1 --platform=node --outfile=__test__/index.test.js &&\
+		$(NODE_BIN)jest __test__
 
 ## format
-prettier=node_modules/.bin/prettier
+prettier=$(NODE_BIN)prettier
 format:
 	$(prettier) --write src/
 
@@ -30,4 +32,4 @@ format-check:
 
 ## lint
 lint-src:
-	node_modules/.bin/eslint src/** -f='stylish' --color
+	$(NODE_BIN)eslint src/** -f='stylish' --color
