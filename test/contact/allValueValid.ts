@@ -1,7 +1,7 @@
 import { allValueValid, getName, getEmail, getMessage } from '../../src';
 
 const testContactValidation = () =>
-    describe('Contact allValueValid', () => {
+    describe('Contact validation', () => {
         const name = 'Wendy';
         const email = 'wendy2000@gmail.com';
         const message = 'Wendy is here to test';

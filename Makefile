@@ -3,6 +3,13 @@
 
 NODE_BIN=node_modules/.bin/
 
+all:
+	make lint &&\
+		make typecheck &&\
+		make format-check &&\
+		make test &&\
+		make build
+
 ## type check
 tsc=$(NODE_BIN)tsc
 transpile:
@@ -24,12 +31,27 @@ test:
 
 ## format
 prettier=$(NODE_BIN)prettier
-format:
-	$(prettier) --write src/
+prettier=$(NODE_BIN)prettier
+prettify-src:
+	$(prettier) --$(type) src/
+
+prettify-test:
+	$(prettier) --$(type) test/
 
 format-check:
-	$(prettier) --check src/
+	(trap 'kill 0' INT; make prettify-src type=check & make prettify-test type=check)
+
+format:
+	(trap 'kill 0' INT; make prettify-src type=write & make prettify-test type=write)
 
 ## lint
+eslint:
+	$(NODE_BIN)eslint $(folder)/** -f='stylish' --color
 lint-src:
-	$(NODE_BIN)eslint src/** -f='stylish' --color
+	make eslint folder=src
+
+lint-test:
+	make eslint folder=test
+
+lint:
+	(trap 'kill 0' INT; make lint-src & make lint-test)
