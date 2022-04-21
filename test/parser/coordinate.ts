@@ -2,7 +2,7 @@ import { parseAsLongitude, parseAsLatitude } from '../../src';
 
 const testCoordinateParser = () =>
     describe('Coordinate parser', () => {
-        it('should parse as latitude', () => {
+        it('should parse a number within range as latitude', () => {
             const latitude = 3.1234;
             expect(parseAsLatitude(latitude)).toBe(latitude);
         });
@@ -11,7 +11,7 @@ const testCoordinateParser = () =>
             expect(() => parseAsLatitude(91)).toThrowError();
         });
 
-        it('should parse as longitude', () => {
+        it('should parse a number within range as longitude', () => {
             const longitude = 120.1234;
             expect(parseAsLongitude(longitude)).toBe(longitude);
         });
