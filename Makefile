@@ -11,6 +11,10 @@ all:
 		make test &&\
 		make build
 
+## install
+install:
+	yarn install --frozen-lockfile
+
 ## type check
 tsc=$(NODE_BIN)tsc
 transpile:
