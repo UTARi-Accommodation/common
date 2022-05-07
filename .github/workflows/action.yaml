@@ -12,7 +12,7 @@ jobs:
               uses: actions/checkout@v2
 
             - name: Install Depedencies
-              run: yarn
+              run: make install
 
             - name: Run Typecheck
               run: make typecheck

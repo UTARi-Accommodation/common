@@ -35,3 +35,4 @@ _*Below are the listed commands that you can use to build/develop/test this app*
 | make lint         | Run linter for source and test code               |
 | make format-check | Run prettier to check source and test code format |
 | make format       | Run prettier to format source and test code       |
+| make install      | Install all dependencies                          |
