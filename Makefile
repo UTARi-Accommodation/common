@@ -36,7 +36,6 @@ test:
 
 ## format
 prettier=$(NODE_BIN)prettier
-prettier=$(NODE_BIN)prettier
 prettify-src:
 	$(prettier) --$(type) src/
 
