@@ -2,7 +2,7 @@
     "name": "utari-common",
     "version": "0.0.1",
     "author": "PoolOfDeath20",
-    "license": "MIT",
+    "license": "GPL-3.0",
     "main": "build/index.js",
     "types": "build/index.d.ts",
     "type": "module",

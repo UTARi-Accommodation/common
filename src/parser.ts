@@ -29,7 +29,7 @@ const parseAsReadonlyRegionArray = (regions: any): ReadonlyArray<Region> =>
         .split(',')
         .flatMap((region) => {
             const parsed = parseAsRegion(region.trim().toUpperCase());
-            return parsed ? [parsed] : [];
+            return !parsed ? [] : [parsed];
         });
 
 const parseAsRoomType = (roomType: any) =>
@@ -48,7 +48,7 @@ const parseAsReadonlyRoomTypeArray = (
             const parsed = parseAsRoomType(
                 capitalize(roomType.trim().toLowerCase())
             );
-            return parsed ? [parsed] : [];
+            return !parsed ? [] : [parsed];
         });
 
 const parseAsUnitType = (unitType: any) =>
@@ -67,7 +67,7 @@ const parseAsReadonlyUnitTypeArray = (
             const parsed = parseAsUnitType(
                 capitalize(unitType.trim().toLowerCase())
             );
-            return parsed ? [parsed] : [];
+            return !parsed ? [] : [parsed];
         });
 
 const parseAsLatitude = (latitude: unknown) =>

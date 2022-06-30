@@ -11,7 +11,7 @@ const parseAsReadonlyRegionArray = (regions) => parseAsString(regions)
     .split(',')
     .flatMap((region) => {
     const parsed = parseAsRegion(region.trim().toUpperCase());
-    return parsed ? [parsed] : [];
+    return !parsed ? [] : [parsed];
 });
 const parseAsRoomType = (roomType) => parseAsCustomType(roomType, (roomType) => roomType === 'Room' || roomType === 'Roommate').orElseGetUndefined();
 const parseAsReadonlyRoomTypeArray = (roomTypes) => parseAsString(roomTypes)
@@ -19,7 +19,7 @@ const parseAsReadonlyRoomTypeArray = (roomTypes) => parseAsString(roomTypes)
     .split(',')
     .flatMap((roomType) => {
     const parsed = parseAsRoomType(capitalize(roomType.trim().toLowerCase()));
-    return parsed ? [parsed] : [];
+    return !parsed ? [] : [parsed];
 });
 const parseAsUnitType = (unitType) => parseAsCustomType(unitType, (unitType) => unitType === 'House' || unitType === 'Condominium').orElseGetUndefined();
 const parseAsReadonlyUnitTypeArray = (unitTypes) => parseAsString(unitTypes)
@@ -27,7 +27,7 @@ const parseAsReadonlyUnitTypeArray = (unitTypes) => parseAsString(unitTypes)
     .split(',')
     .flatMap((unitType) => {
     const parsed = parseAsUnitType(capitalize(unitType.trim().toLowerCase()));
-    return parsed ? [parsed] : [];
+    return !parsed ? [] : [parsed];
 });
 const parseAsLatitude = (latitude) => parseAsNumber(latitude)
     .inRangeOf(-90, 90)
