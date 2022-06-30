@@ -6,9 +6,9 @@ const getName = (string) => {
         value,
         error: value.isEmpty()
             ? '*Please do not leave name section empty*'
-            : value.isBlank()
-                ? '*Please do not leave name section blank*'
-                : '',
+            : !value.isBlank()
+                ? ''
+                : '*Please do not leave name section blank*',
     };
 };
 const getEmail = (string) => {
