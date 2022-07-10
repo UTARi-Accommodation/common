@@ -9,20 +9,23 @@
     "files": [
         "build"
     ],
+    "scripts": {
+        "postinstall": "make build"
+    },
     "dependencies": {
         "granula-string": "^1.0.5",
-        "parse-dont-validate": "^1.0.3"
+        "parse-dont-validate": "^1.0.3",
+        "ts-add-js-extension": "^1.2.0",
+        "typescript": "^4.7.4"
     },
     "devDependencies": {
         "@types/jest": "^27.4.1",
         "@types/node": "^17.0.21",
-        "@typescript-eslint/eslint-plugin": "^5.17.0",
-        "@typescript-eslint/parser": "^5.17.0",
-        "esbuild": "^0.14.27",
-        "eslint": "^8.12.0",
+        "@typescript-eslint/eslint-plugin": "^5.30.5",
+        "@typescript-eslint/parser": "^5.30.5",
+        "esbuild": "^0.14.48",
+        "eslint": "^8.19.0",
         "jest": "^27.5.1",
-        "prettier": "^2.6.1",
-        "ts-add-js-extension": "^1.0.1",
-        "typescript": "^4.5.5"
+        "prettier": "^2.7.1"
     }
 }
