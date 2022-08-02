@@ -17,17 +17,17 @@ install:
 
 ## type check
 tsc=$(NODE_BIN)tsc
-transpile:
-	$(tsc) -p tsconfig.json $(arguments) 
-
 typecheck:
-	make transpile arguments=--noEmit
+	$(tsc) -p tsconfig.json --noEmit $(arguments) 
+
+typecheck-watch:
+	make typecheck arguments=--watch
 
 ## build
 prebuild:
 	rm -rf build
 build: prebuild
-	make transpile && $(NODE_BIN)ts-add-js-extension add --dir=build
+	$(tsc) -p tsconfig.build.json && $(NODE_BIN)ts-add-js-extension add --dir=build
 
 ## test
 test:
