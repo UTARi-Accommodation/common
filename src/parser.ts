@@ -11,7 +11,7 @@ const parseNullableAsDefaultOrUndefined = <T>(t: T | null | undefined) =>
 
 const parseAsReadonlyIntArray = (values: any): ReadonlyArray<number> =>
     parseAsString(values)
-        .orElseGetEmptyString()
+        .elseGet('')
         .split(',')
         .flatMap((value) =>
             !isPositiveInt(value.trim()) ? [] : [parseInt(value.trim())]
@@ -21,11 +21,11 @@ const parseAsRegion = (region: any) =>
     parseAsCustomType<Region>(
         region,
         (region) => region === 'SL' || region === 'KP' || region === 'BTHO'
-    ).orElseGetUndefined();
+    ).elseGet(undefined);
 
 const parseAsReadonlyRegionArray = (regions: any): ReadonlyArray<Region> =>
     parseAsString(regions)
-        .orElseGetEmptyString()
+        .elseGet('')
         .split(',')
         .flatMap((region) => {
             const parsed = parseAsRegion(region.trim().toUpperCase());
@@ -36,13 +36,13 @@ const parseAsRoomType = (roomType: any) =>
     parseAsCustomType<RoomType>(
         roomType,
         (roomType) => roomType === 'Room' || roomType === 'Roommate'
-    ).orElseGetUndefined();
+    ).elseGet(undefined);
 
 const parseAsReadonlyRoomTypeArray = (
     roomTypes: any
 ): ReadonlyArray<RoomType> =>
     parseAsString(roomTypes)
-        .orElseGetEmptyString()
+        .elseGet('')
         .split(',')
         .flatMap((roomType) => {
             const parsed = parseAsRoomType(
@@ -55,13 +55,13 @@ const parseAsUnitType = (unitType: any) =>
     parseAsCustomType<UnitType>(
         unitType,
         (unitType) => unitType === 'House' || unitType === 'Condominium'
-    ).orElseGetUndefined();
+    ).elseGet(undefined);
 
 const parseAsReadonlyUnitTypeArray = (
     unitTypes: any
 ): ReadonlyArray<UnitType> =>
     parseAsString(unitTypes)
-        .orElseGetEmptyString()
+        .elseGet('')
         .split(',')
         .flatMap((unitType) => {
             const parsed = parseAsUnitType(
@@ -73,19 +73,19 @@ const parseAsReadonlyUnitTypeArray = (
 const parseAsLatitude = (latitude: unknown) =>
     parseAsNumber(latitude)
         .inRangeOf(-90, 90)
-        .orElseThrowCustom(
+        .elseThrow(
             `Expect lat to be in range of -90 to 90, got "${latitude}" instead`
         );
 
 const parseAsLongitude = (longitude: unknown) =>
     parseAsNumber(longitude)
         .inRangeOf(-180, 180)
-        .orElseThrowCustom(
+        .elseThrow(
             `Expect long to be in range of -180 to 180, got "${longitude}" instead`
         );
 
 const parseAsSearch = (search: unknown) =>
-    parseAsString(search).orElseGetUndefined()?.trim();
+    parseAsString(search).elseGet(undefined)?.trim();
 
 export {
     parseAsLongitude,
