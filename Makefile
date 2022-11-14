@@ -13,7 +13,7 @@ all:
 
 ## install
 install:
-	yarn install --frozen-lockfile
+	pnpm i --frozen-lockfile
 
 ## type check
 tsc=$(NODE_BIN)tsc
