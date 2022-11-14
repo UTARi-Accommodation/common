@@ -4,6 +4,7 @@ import {
     parseAsReadonlyRoomTypeArray,
     parseAsReadonlyUnitTypeArray,
 } from '../../src';
+import { describe, it, expect } from 'vitest';
 
 const testArrayParser = () =>
     describe('String to Array parser', () => {

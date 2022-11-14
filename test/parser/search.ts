@@ -1,4 +1,5 @@
 import { parseAsSearch } from '../../src';
+import { describe, it, expect } from 'vitest';
 
 const testSearchParser = () =>
     describe('Search parser', () => {
