@@ -1,4 +1,5 @@
 import { allValueValid, getName, getEmail, getMessage } from '../../src';
+import { describe, it, expect } from 'vitest';
 
 const testContactValidation = () =>
     describe('Contact validation', () => {

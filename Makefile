@@ -31,8 +31,7 @@ build: prebuild
 
 ## test
 test:
-	$(NODE_BIN)esbuild test/index.ts --bundle --sourcemap --minify --target=node16.3.1 --platform=node --outfile=__test__/index.test.js &&\
-		$(NODE_BIN)jest __test__
+	$(NODE_BIN)vitest
 
 ## format
 prettier=$(NODE_BIN)prettier

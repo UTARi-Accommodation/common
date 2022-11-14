@@ -1,4 +1,5 @@
 import { parseNullableAsDefaultOrUndefined } from '../../src';
+import { describe, it, expect } from 'vitest';
 
 const testNullableParser = () =>
     describe('Nullable to default or undefined parser', () => {

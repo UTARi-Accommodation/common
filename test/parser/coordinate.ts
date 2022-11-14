@@ -1,4 +1,5 @@
 import { parseAsLongitude, parseAsLatitude } from '../../src';
+import { describe, it, expect } from 'vitest';
 
 const testCoordinateParser = () =>
     describe('Coordinate parser', () => {

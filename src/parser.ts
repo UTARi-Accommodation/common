@@ -1,6 +1,6 @@
 import { capitalize, isPositiveInt } from 'granula-string';
 import {
-    parseAsCustomType,
+    parseAsCustom,
     parseAsNumber,
     parseAsString,
 } from 'parse-dont-validate';
@@ -10,22 +10,31 @@ const parseNullableAsDefaultOrUndefined = <T>(t: T | null | undefined) =>
     t ?? undefined;
 
 const parseAsReadonlyIntArray = (values: any): ReadonlyArray<number> =>
-    parseAsString(values)
-        .elseGet('')
+    parseAsString({
+        string: values,
+        ifParsingFailThen: 'get',
+        alternativeValue: '',
+    })
         .split(',')
         .flatMap((value) =>
             !isPositiveInt(value.trim()) ? [] : [parseInt(value.trim())]
         );
 
 const parseAsRegion = (region: any) =>
-    parseAsCustomType<Region>(
-        region,
-        (region) => region === 'SL' || region === 'KP' || region === 'BTHO'
-    ).elseGet(undefined);
+    parseAsCustom<Region, undefined>({
+        value: region,
+        ifParsingFailThen: 'get',
+        alternativeValue: undefined,
+        predicate: (region) =>
+            region === 'SL' || region === 'KP' || region === 'BTHO',
+    });
 
 const parseAsReadonlyRegionArray = (regions: any): ReadonlyArray<Region> =>
-    parseAsString(regions)
-        .elseGet('')
+    parseAsString({
+        string: regions,
+        ifParsingFailThen: 'get',
+        alternativeValue: '',
+    })
         .split(',')
         .flatMap((region) => {
             const parsed = parseAsRegion(region.trim().toUpperCase());
@@ -33,16 +42,21 @@ const parseAsReadonlyRegionArray = (regions: any): ReadonlyArray<Region> =>
         });
 
 const parseAsRoomType = (roomType: any) =>
-    parseAsCustomType<RoomType>(
-        roomType,
-        (roomType) => roomType === 'Room' || roomType === 'Roommate'
-    ).elseGet(undefined);
+    parseAsCustom<RoomType, undefined>({
+        value: roomType,
+        predicate: (roomType) => roomType === 'Room' || roomType === 'Roommate',
+        ifParsingFailThen: 'get',
+        alternativeValue: undefined,
+    });
 
 const parseAsReadonlyRoomTypeArray = (
     roomTypes: any
 ): ReadonlyArray<RoomType> =>
-    parseAsString(roomTypes)
-        .elseGet('')
+    parseAsString({
+        string: roomTypes,
+        ifParsingFailThen: 'get',
+        alternativeValue: '',
+    })
         .split(',')
         .flatMap((roomType) => {
             const parsed = parseAsRoomType(
@@ -52,16 +66,22 @@ const parseAsReadonlyRoomTypeArray = (
         });
 
 const parseAsUnitType = (unitType: any) =>
-    parseAsCustomType<UnitType>(
-        unitType,
-        (unitType) => unitType === 'House' || unitType === 'Condominium'
-    ).elseGet(undefined);
+    parseAsCustom<UnitType, undefined>({
+        value: unitType,
+        ifParsingFailThen: 'get',
+        alternativeValue: undefined,
+        predicate: (unitType) =>
+            unitType === 'House' || unitType === 'Condominium',
+    });
 
 const parseAsReadonlyUnitTypeArray = (
     unitTypes: any
 ): ReadonlyArray<UnitType> =>
-    parseAsString(unitTypes)
-        .elseGet('')
+    parseAsString({
+        string: unitTypes,
+        ifParsingFailThen: 'get',
+        alternativeValue: '',
+    })
         .split(',')
         .flatMap((unitType) => {
             const parsed = parseAsUnitType(
@@ -71,21 +91,33 @@ const parseAsReadonlyUnitTypeArray = (
         });
 
 const parseAsLatitude = (latitude: unknown) =>
-    parseAsNumber(latitude)
-        .inRangeOf(-90, 90)
-        .elseThrow(
-            `Expect lat to be in range of -90 to 90, got "${latitude}" instead`
-        );
+    parseAsNumber({
+        number: latitude,
+        ifParsingFailThen: 'throw',
+        message: `Expect lat to be in range of -90 to 90, got "${latitude}" instead`,
+        inRangeOf: {
+            min: -90,
+            max: 90,
+        },
+    });
 
 const parseAsLongitude = (longitude: unknown) =>
-    parseAsNumber(longitude)
-        .inRangeOf(-180, 180)
-        .elseThrow(
-            `Expect long to be in range of -180 to 180, got "${longitude}" instead`
-        );
+    parseAsNumber({
+        number: longitude,
+        ifParsingFailThen: 'throw',
+        message: `Expect long to be in range of -180 to 180, got "${longitude}" instead`,
+        inRangeOf: {
+            min: -180,
+            max: 180,
+        },
+    });
 
 const parseAsSearch = (search: unknown) =>
-    parseAsString(search).elseGet(undefined)?.trim();
+    parseAsString({
+        string: search,
+        ifParsingFailThen: 'get',
+        alternativeValue: undefined,
+    })?.trim();
 
 export {
     parseAsLongitude,
