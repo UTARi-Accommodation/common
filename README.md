@@ -9,18 +9,16 @@ It emulates the design of a NPM package so that it can be installed as NPM packa
 | Aspect                                                                 | Name           |
 | ---------------------------------------------------------------------- | -------------- |
 | Development Language                                                   | TypeScipt      |
-| Scripting Language                                                     | JavaScript     |
-| Bundling                                                               | Esbuild        |
-| Testing                                                                | Jest           |
+| Testing                                                                | Vitest         |
 | Run-time Environment                                                   | NodeJS         |
 | Build Automation Tool                                                  | Make           |
 | Text Editor                                                            | NeoVim         |
-| Dependency Management                                                  | Yarn           |
+| Dependency Management                                                  | Pnpm           |
 | Continuous Integration, Continuous Delivery, and Continuous Deployment | GitHub Actions |
 
 #### Install Dependencies
 
-1. Run `yarn` to install all dependencies, preferably `yarn install --frozen-lockfile`
+1. Run `pnpm` to install all dependencies, preferably `pnpm i --frozen-lockfile`
 
 #### Make Commands
 
@@ -28,7 +26,6 @@ _*Below are the listed commands that you can use to build/develop/test this app*
 
 | Command           | Usage                                             |
 | ----------------- | ------------------------------------------------- |
-| make start        | Start development                                 |
 | make test         | Run all test code                                 |
 | make build        | Bundle and build the app                          |
 | make typecheck    | Run typechecking for source code                  |
